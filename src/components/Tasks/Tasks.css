@@ -1,3 +1,7 @@
 .tasks{
     width: 90%;
 }
+
+.tasks:last-child{
+    margin-bottom: 80px;
+}
