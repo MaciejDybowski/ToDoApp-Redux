@@ -2,14 +2,15 @@ import React from 'react'
 import Task from '../Task';
 import './Tasks.css';
 import FlipMove from 'react-flip-move'
+import {useSelector} from 'react-redux'
 
 
-function Tasks({ tasks, deleteTask, updateTask }) {
-  
+function Tasks() {
+    const tasks = useSelector(state => state);
     return (
         <div className='tasks'>
             <FlipMove>
-                {tasks.map((task) => <Task key={task.id} data={task} deleteTask={deleteTask} updateTask={updateTask} />)}
+                {tasks.map((task) => <Task key={task.id} data={task}/>)}
             </FlipMove>
 
         </div>

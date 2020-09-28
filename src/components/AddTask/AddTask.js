@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import './AddTask.css'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { useDispatch } from 'react-redux';
+import { addTaskRedux } from '../../actions';
 
 
-let idTask = 8;
-
-function AddTask({ tasks, addTask }) {
+function AddTask() {
+    const dispatch = useDispatch();
     const [inputValue, setInputValue] = useState("");
 
     const handleInput = (e) => {
@@ -17,15 +18,8 @@ function AddTask({ tasks, addTask }) {
         if (inputValue === "") {
             alert("Podaj treść zadania");
         } else {
-            let obj = {
-                id: idTask,
-                checked: false,
-                value: inputValue,
-                date: new Date(),
-            }
-            addTask([...tasks, obj])
             setInputValue("");
-            idTask++;
+            dispatch(addTaskRedux(inputValue))
         }
     }
 
